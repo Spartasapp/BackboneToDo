@@ -1,0 +1,84 @@
+$btnColor : rgb(8, 216, 8);
+body {
+    background-color: black;
+    .container {
+        display: flex;
+        justify-content: center;
+        .todoBox {
+            width: 600px;
+            background-color: black;
+            border: 3px solid gold;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            .addItem{
+                width: 500px;
+                display: flex;
+                justify-content: space-around;
+                .btn {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 15px;
+                    border-width: inherit;
+                }
+                .btn.plus{
+                    background-color:$btnColor;
+                    font-size: 1.5em;
+                    color: white;
+                }
+            }
+            
+            .rocketsList {
+                list-style-type: none;
+                width: 500px;
+                padding: 50px 0px;
+                .todoItem {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .changeTaskStatus {
+                    display: flex;
+                    align-items: center;
+                }
+                .title {
+                    color: white;
+                    width: 400px;
+                    font-size: 1.5em;
+                    margin-left: 10px;
+                }
+                .changeTaskStatus.editing .title{
+                    display: none;
+                }
+                .changeTaskStatus.editing .changeTitle{
+                    display: block;
+                }
+                .changeTitle {
+                    display: none;
+                }
+                
+                .btn.deleteRow{
+                    background-color:$btnColor;
+                }
+                .fa.fa-trash{
+                    color: white;
+                    font-size: 136%;
+                }
+                .done {
+                    color: gold;
+                    text-decoration: line-through;
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
+
+
+

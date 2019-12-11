@@ -1,40 +1,48 @@
-class ToDoItemView extends Backbone.View{
+class ToDoItemView extends Backbone.View {
     preinitialize() {
         this.tagName = "li";
-        
-      }
-    initialize(){
-        this.events= {
-            'click .deleteRow' :  'deleteRow',
-            'click .toggle'    :  'toggleDone',
-            'click .title'     :  'changeTitle',
-            'blur .changeTitle':  'removeEditClass'
+
+    }
+    initialize() {
+        this.events = {
+            'click .deleteRow': 'deleteRow',
+            'click .toggle': 'toggleDone',
+            'click .title': 'changeTitle',
+            'blur .changeTitle': 'removeEditClass',
+            'keypress .changeTitle': 'onEnter'
         }
         this.template = _.template($('#todoItem').html());
-        this.listenTo(this.model,'change', this.render);
-        this.listenTo(this.model,'destroy', this.remove);
+        this.listenTo(this.model, 'change', this.render);
+        this.listenTo(this.model, 'destroy', this.remove);
     }
 
-    render(){
+    render() {
         let view = this.template(this.model.toJSON());
         this.$el.html(view);
         return this.$el;
     }
-    toggleDone(){
+    toggleDone() {
         this.model.toggle();
         this.$('li').toggleClass('done', this.model.get('done'));
 
-      }
-    deleteRow(){
+    }
+    deleteRow() {
         this.model.destroy();
     }
-    changeTitle(){
+    changeTitle() {
         this.$('.changeTaskStatus').addClass('editing');
         $('.changeTitle').focus();
     }
-    removeEditClass(){
+    removeEditClass() {
         this.$('.changeTaskStatus').removeClass('editing');
         let title = $('.changeTitle').attr('value');
-        this.model.set('title',title)
+        this.model.set('title', title)
+    }
+    onEnter(e) {
+        if (e.key === "Enter") {
+            this.$('.changeTaskStatus').removeClass('editing');
+            let title = $('.changeTitle').attr('value');
+            this.model.set('title', title)
+        }
     }
 };

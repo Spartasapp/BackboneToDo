@@ -1,0 +1,113 @@
+body {
+  background-color: black;
+}
+
+body .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .container .todoBox {
+  width: 600px;
+  background-color: black;
+  border: 3px solid gold;
+  border-radius: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+body .container .todoBox .addItem {
+  width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .container .todoBox .addItem .btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border-width: inherit;
+}
+
+body .container .todoBox .addItem .btn.plus {
+  background-color: #08d808;
+  font-size: 1.5em;
+  color: white;
+}
+
+body .container .todoBox .rocketsList {
+  list-style-type: none;
+  width: 500px;
+  padding: 50px 0px;
+}
+
+body .container .todoBox .rocketsList .todoItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .container .todoBox .rocketsList .changeTaskStatus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .container .todoBox .rocketsList .title {
+  color: white;
+  width: 400px;
+  font-size: 1.5em;
+  margin-left: 10px;
+}
+
+body .container .todoBox .rocketsList .changeTaskStatus.editing .title {
+  display: none;
+}
+
+body .container .todoBox .rocketsList .changeTaskStatus.editing .changeTitle {
+  display: block;
+}
+
+body .container .todoBox .rocketsList .changeTitle {
+  display: none;
+}
+
+body .container .todoBox .rocketsList .btn.deleteRow {
+  background-color: #08d808;
+}
+
+body .container .todoBox .rocketsList .fa.fa-trash {
+  color: white;
+  font-size: 136%;
+}
+
+body .container .todoBox .rocketsList .done {
+  color: gold;
+  text-decoration: line-through;
+}
+/*# sourceMappingURL=style.css.map */

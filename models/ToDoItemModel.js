@@ -7,7 +7,7 @@ class ToDoItemModel extends Backbone.Model{
     }
     validate(attrs){
         if (!((attrs.size) > 0)) {
-            console.log('Incorrect size');
+            
             return 'Incorrect size';
         }
     }
