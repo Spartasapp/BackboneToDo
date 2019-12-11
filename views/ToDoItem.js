@@ -23,7 +23,7 @@ class ToDoItemView extends Backbone.View{
     toggleDone(){
         debugger
         this.model.toggle();
-        this.$el.toggleClass('done', this.model.get('done'));
+        this.$('li').toggleClass('done', this.model.get('done'));
 
       }
     deleteRow(){
