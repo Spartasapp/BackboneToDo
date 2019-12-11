@@ -2,6 +2,7 @@ class ListOfToDoItemsView extends Backbone.View{
     preinitialize() {
         debugger
         
+        
       }
     
     initialize(){
@@ -10,10 +11,11 @@ class ListOfToDoItemsView extends Backbone.View{
             "click .addObject": "addObject",
             "keypress #inpTitle": "createOnEnter"
         }
-        this.template = _.template($('#todoContainer').html());
-        this.$el.html(this.template());
         this.coll = new ToDoItemCollection();
-        // this.footer = this.$(".rocketsTotal");
+        this.template = _.template($('#stats').html());
+        // this.$el.html(this.template());
+        
+        this.footer = this.$(".rocketsTotal");
         this.listenTo(this.coll, "all", this.render);
         this.listenTo(this.coll, "add", this.addOne);
 
@@ -21,10 +23,11 @@ class ListOfToDoItemsView extends Backbone.View{
 
     render(){
         debugger
-        // let done = this.coll.done().length;
-        // let isNotDone = this.coll.done().length;
-        // this.footer.text(this.template({done:done, isNotDone:isNotDone }))
-        this.$('.rockets-count').text(this.coll.length);
+        let done = this.coll.done().length;
+        let isNotDone = this.coll.length-done;
+        this.footer.html(this.template({done:done, isNotDone:isNotDone }))
+        // this.$('.rockets-count').text(this.coll.length);
+
     }
 
     addObject(){

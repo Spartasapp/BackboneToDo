@@ -2,7 +2,8 @@ class ToDoItemModel extends Backbone.Model{
     preinitialize() {}
     defaults(){
         this.title= '',
-        this.done = false
+        this.done = true,
+        this.isNotDone = 0
     }
     validate(attrs){
         if (!((attrs.size) > 0)) {
@@ -11,6 +12,7 @@ class ToDoItemModel extends Backbone.Model{
         }
     }
     toggle(){
+        debugger
         this.save({done: !this.get("done")});
     }
 };
@@ -21,9 +23,11 @@ class ToDoItemCollection extends Backbone.Collection{
         this.model=ToDoItemModel
     }
     done() {
+        debugger
         return this.where({done: true});
       }
     isNotDone() {
+        debugger
         return this.where({done:false });
       }
 }
