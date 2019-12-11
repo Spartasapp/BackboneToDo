@@ -1,10 +1,22 @@
 body {
     background-color: black;
 }
+.btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border-width: inherit;
+}
+.btn.plus{
+    background-color: rgb(8, 216, 8);
+    font-size: 1.5em;
+    color: white;
+}
 .container {
     display: flex;
     justify-content: center;
 }
+
 .todoBox {
     width: 600px;
     background-color: black;
@@ -41,10 +53,24 @@ body {
     font-size: 1.5em;
     margin-left: 10px;
 }
-.deleteRow{
-    width: 20px;
-    height: 20px;
+.changeTaskStatus.editing .title{
+    display: none;
+}
+.changeTaskStatus.editing .changeTitle{
+    display: block;
+}
+.changeTitle {
+    display: none;
+}
+
+.btn.deleteRow{
+    background-color: rgb(8, 216, 8);
+}
+.fa.fa-trash{
+    color: white;
+    font-size: 136%;
 }
 .done {
+    color: gold;
     text-decoration: line-through;
 }

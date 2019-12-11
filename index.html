@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDoList</title>
+    <link rel="stylesheet" href="./assets/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -14,7 +15,7 @@
                 <h2>Todo</h2>
                 <header class="addItem">
                     <input type="text" id="inpTitle" style="width:400px" placeholder="type new Todo">
-                    <button class="btn addObject">add one</button>
+                    <button class="btn plus addObject">+</button>
                 </header>
                 <ul class="rocketsList">
                 </ul>
@@ -32,9 +33,10 @@
     <div class="todoItem addItem">
         <div class="changeTaskStatus">
             <input type="checkbox" class="toggle">
-            <li class="title" contenteditable="true"><%= title %></li>
+            <li class="title" ><%= title %></li>
+            <input class="changeTitle" type="text" value="<%- title %>"/>
         </div>
-        <button class="deleteRow btn btn-small btn-danger">X</button>
+        <button class="btn deleteRow"><i class="fa fa-trash" aria-hidden="true"></i></button>
     </div>
     
 </script>

@@ -1,12 +1,10 @@
 class ListOfToDoItemsView extends Backbone.View{
     preinitialize() {
-        debugger
         
         
       }
     
     initialize(){
-        debugger
         this.events= {
             "click .addObject": "addObject",
             "keypress #inpTitle": "createOnEnter"
@@ -22,7 +20,6 @@ class ListOfToDoItemsView extends Backbone.View{
     }
 
     render(){
-        debugger
         let done = this.coll.done().length;
         let isNotDone = this.coll.length-done;
         this.footer.html(this.template({done:done, isNotDone:isNotDone }))
@@ -31,13 +28,18 @@ class ListOfToDoItemsView extends Backbone.View{
     }
 
     addObject(){
-        debugger
+        let title = $("#inpTitle").attr("value");
+        if(!title.length){
+            return false
+        }
         this.coll.add({});
     }
 
     addOne(model){
-        debugger
         let title = $("#inpTitle").attr("value");
+        if(!title.length){
+            return false
+        }
         model.set({
             title
         });

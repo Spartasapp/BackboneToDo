@@ -12,7 +12,6 @@ class ToDoItemModel extends Backbone.Model{
         }
     }
     toggle(){
-        debugger
         this.save({done: !this.get("done")});
     }
 };
@@ -23,11 +22,9 @@ class ToDoItemCollection extends Backbone.Collection{
         this.model=ToDoItemModel
     }
     done() {
-        debugger
         return this.where({done: true});
       }
     isNotDone() {
-        debugger
         return this.where({done:false });
       }
 }
