@@ -5,11 +5,14 @@ class ToDoItemView extends Backbone.View {
     }
     initialize() {
         this.events = {
-            'click .deleteRow': 'deleteRow',
-            'click .toggle': 'toggleDone',
-            'click .title': 'changeTitle',
-            'blur .changeTitle': 'removeEditClass',
-            'keypress .changeTitle': 'onEnter'
+            'click .deleteRow'         : 'deleteRow',
+            'click .toggle'            : 'toggleDone',
+            'click .title'             : 'changeTitle',
+            'blur .changeTitle'        : 'removeEditClass',
+            'keypress .changeTitle'    : 'onEnter',
+            'dragstart .addItem'         : 'onDragViewFrom',
+            'dragover .addItem'        : 'onDragView',
+            'drop .addItem'            : 'onDragViewTo',
         }
         this.template = _.template($('#todoItem').html());
         this.listenTo(this.model, 'change', this.render);
@@ -44,5 +47,20 @@ class ToDoItemView extends Backbone.View {
             let title = $('.changeTitle').attr('value');
             this.model.set('title', title)
         }
+    }
+    onDragViewFrom(e){
+        
+        let obj = e.currentTarget;
+        let posX = e.pageX;
+        let posY = e.pageY;
+        console.log(e.pageX,  e.pageY)
+    }
+    onDragView(e){
+       
+        e.preventDefault();
+    }
+    onDragViewTo(e){
+        debugger
+        let obj = e.currentTarget;
     }
 };

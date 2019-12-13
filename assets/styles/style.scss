@@ -14,27 +14,28 @@ body {
             flex-direction: column;
             align-items: center;
             color: white;
-            .addItem{
-                width: 500px;
-                display: flex;
-                justify-content: space-around;
-                .btn {
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 15px;
-                    border-width: inherit;
-                }
-                .btn.plus{
-                    background-color:$btnColor;
-                    font-size: 1.5em;
-                    color: white;
-                }
-            }
-            
             .rocketsList {
                 list-style-type: none;
                 width: 500px;
                 padding: 50px 0px;
+                position: absolute;
+                .addItem{
+                    width: 500px;
+                    display: flex;
+                    justify-content: space-around;
+                    position: absolute;
+                    .btn {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 15px;
+                        border-width: inherit;
+                    }
+                    .btn.plus{
+                        background-color:$btnColor;
+                        font-size: 1.5em;
+                        color: white;
+                    }
+                }
                 .todoItem {
                     display: flex;
                     justify-content: space-between;

@@ -36,12 +36,15 @@ class ListOfToDoItemsView extends Backbone.View{
     }
 
     addOne(model){
+        debugger
+        let nextId = 0;
         let title = $("#inpTitle").attr("value");
         if(!title.length){
             return false
         }
         model.set({
-            title
+            title,
+            id: nextId++
         });
         let input = $("#inpTitle");
         input.val('');
