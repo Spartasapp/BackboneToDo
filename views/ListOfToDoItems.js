@@ -6,13 +6,14 @@ class ListOfToDoItemsView extends Backbone.View{
     
     initialize(){
         this.events= {
-            "click .addObject": "addObject",
-            "keypress #inpTitle": "createOnEnter"
+            "click .addObject"          : "addObject",
+            "keypress #inpTitle"        : "createOnEnter",
+            'dragstart .addItem'        : 'onDragViewFrom',
+            'dragover .addItem'         : 'onDragView',
+            'drop .addItem'             : 'onDragViewTo'
         }
         this.coll = new ToDoItemCollection();
-        this.template = _.template($('#stats').html());
-        // this.$el.html(this.template());
-        
+        this.template = _.template($('#stats').html());   
         this.footer = this.$(".rocketsTotal");
         this.listenTo(this.coll, "all", this.render);
         this.listenTo(this.coll, "add", this.addOne);
@@ -22,9 +23,8 @@ class ListOfToDoItemsView extends Backbone.View{
     render(){
         let done = this.coll.done().length;
         let isNotDone = this.coll.length-done;
-        this.footer.html(this.template({done:done, isNotDone:isNotDone }))
-        // this.$('.rockets-count').text(this.coll.length);
-
+        this.footer.html(this.template({done:done, isNotDone:isNotDone }));
+        return this;
     }
 
     addObject(){
@@ -36,15 +36,15 @@ class ListOfToDoItemsView extends Backbone.View{
     }
 
     addOne(model){
-        debugger
-        let nextId = 0;
         let title = $("#inpTitle").attr("value");
         if(!title.length){
             return false
         }
+        
         model.set({
             title,
-            id: nextId++
+            id: this.coll.length-1
+            
         });
         let input = $("#inpTitle");
         input.val('');
@@ -61,5 +61,58 @@ class ListOfToDoItemsView extends Backbone.View{
         }
 
     }
+    onDragViewFrom(e){
+        let draggableObjId = e.currentTarget.id;
+        let model = this.coll.findWhere({id:Number(draggableObjId)});
+        model.drag = 'y';
+    //     for(let i=0;i<parentNode.children.length;i++){
+    //         if(parentNode.children[i]!==draggableItem){
+    //         parentNode.children[i].addEventListener('dragover',(e)=>{e.preventDefault();});
+    //         let somthFunc = (e)=>{
+    //             debugger
+    //             let replacebleobj = e.currentTarget;
+    //             clone = replacebleobj;
+    //         }
+    //         parentNode.children[i].addEventListener('drop',somthFunc);
+    //         parentNode.children[i].removeEventListener('dragover',(e)=>{e.preventDefault();});
+    //         parentNode.children[i].removeEventListener('drop',somthFunc);
+
+    //        }
+    //    }
+       
+       console.log('1111')
+     }
+     onDragView(e){
+         e.preventDefault();
+     }
+    onDragViewTo(e){
+        debugger
+         let findDraggableModel = this.coll.models.filter(el=>{
+             return el.drag === 'y';
+         });
+         
+         let findReplaceableModel = this.coll.models.filter(el=>{
+             return el.id === Number(e.currentTarget.id);
+         });
+
+        //  let findRemainingModel = this.coll.models.filter(el=>{
+        //      return el.drag !== 'y';
+        //  });
+         let findIndexDraggableobj = this.coll.models.findIndex((el,i)=>{
+             return i == findDraggableModel[0].id;
+         })
+         let findIndexReplaceableobj = this.coll.models.findIndex((el,i)=>{
+             return i == e.currentTarget.id;
+         })
+         let draggableObj = findDraggableModel[0];
+         delete draggableObj.drag;
+         this.coll.remove(draggableObj.id);
+         this.coll.remove(findReplaceableModel[0].id);
+         this.coll.add(findDraggableModel,{at:findIndexReplaceableobj});
+         this.coll.add(findReplaceableModel,{at:findIndexDraggableobj});
+         this.render();
+         console.log('222');
+     }
+     
 
 };

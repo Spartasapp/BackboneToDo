@@ -10,7 +10,7 @@ class ToDoItemView extends Backbone.View {
             'click .title'             : 'changeTitle',
             'blur .changeTitle'        : 'removeEditClass',
             'keypress .changeTitle'    : 'onEnter',
-            'dragstart .addItem'         : 'onDragViewFrom',
+            'dragstart .addItem'       : 'onDragViewFrom',
             'dragover .addItem'        : 'onDragView',
             'drop .addItem'            : 'onDragViewTo',
         }
@@ -48,19 +48,5 @@ class ToDoItemView extends Backbone.View {
             this.model.set('title', title)
         }
     }
-    onDragViewFrom(e){
-        
-        let obj = e.currentTarget;
-        let posX = e.pageX;
-        let posY = e.pageY;
-        console.log(e.pageX,  e.pageY)
-    }
-    onDragView(e){
-       
-        e.preventDefault();
-    }
-    onDragViewTo(e){
-        debugger
-        let obj = e.currentTarget;
-    }
+ 
 };
