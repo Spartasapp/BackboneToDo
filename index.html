@@ -39,7 +39,17 @@
         <button class="btn deleteRow"><i class="fa fa-trash" aria-hidden="true"></i></button>
     </div>
     
-</script>
+    </script>
+    <!-- <script type="text/template" id="status">
+        <div >
+            <%= fff %>
+        </div>
+    </script> -->
+    <script type="text/template" id="status">
+        <div >
+             <%= done ? "Task done" : "Task is not Done" %>
+        </div>
+    </script>
 
 </body>
 
@@ -47,6 +57,7 @@
 <script src="assets/js/underscore.js"></script>
 <script src="assets/js/backbone.js"></script>
 <script src="models/ToDoItemModel.js"></script>
+<script src="views/StatusItem.js"></script>
 <script src="views/ToDoItem.js"></script>
 <script src="views/ListOfToDoItems.js"></script>
 <script src="main.js"></script>

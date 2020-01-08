@@ -50,6 +50,8 @@ class ListOfToDoItemsView extends Backbone.View{
         input.val('');
         let view = new ToDoItemView({ model: model });
         this.$('.rocketsList').append(view.render());
+        let statusView = new StatusItem({model});
+        this.$('.rocketsList').append(statusView.render());
 
     }
     createOnEnter(e){

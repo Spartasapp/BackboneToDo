@@ -2,7 +2,7 @@ class ToDoItemModel extends Backbone.Model{
     preinitialize() {}
     defaults(){
         this.title= '',
-        this.done = true,
+        // this.done = true,
         this.isNotDone = 0
     }
     validate(attrs){

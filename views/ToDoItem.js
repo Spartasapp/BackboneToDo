@@ -39,7 +39,7 @@ class ToDoItemView extends Backbone.View {
     removeEditClass() {
         this.$('.changeTaskStatus').removeClass('editing');
         let title = $('.changeTitle').attr('value');
-        this.model.set('title', title)
+        this.model.set('title', title);
     }
     onEnter(e) {
         if (e.key === "Enter") {
